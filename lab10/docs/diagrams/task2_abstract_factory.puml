@@ -1,0 +1,158 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+title Завдання 2 — Abstract Factory
+interface BankingProductFactory <<Abstract Factory>> {
+ +segment(): Segment
+ +createCard(): Card
+ +createAccount(): CurrentAccount
+ +createTariff(): TariffPlan
+}
+class Segment <<Value Object>> {
+ -name: String
+ +name(): String
+}
+class Branch <<Client>> {
+ +openService(client: String, factory: BankingProductFactory): BankingPackage
+}
+class BankingPackage <<Validated Product Family>> {
+ -segment: Segment
+ -card: Card
+ -account: CurrentAccount
+ -tariff: TariffPlan
+ -BankingPackage(factory: BankingProductFactory)
+ {static} +from(factory: BankingProductFactory): BankingPackage
+ +getSegment(): Segment
+ +getCard(): Card
+ +getAccount(): CurrentAccount
+ +getTariff(): TariffPlan
+ +toString(): String
+}
+Branch ..> BankingProductFactory
+Branch ..> BankingPackage
+BankingPackage ..> BankingProductFactory : creates and validates
+BankingPackage "1" *-- "1" Card
+BankingPackage "1" *-- "1" CurrentAccount
+BankingPackage "1" *-- "1" TariffPlan
+BankingPackage "0..*" --> "1" Segment
+interface Card <<Abstract Product>> {
+ +segment(): Segment
+ +description(): String
+}
+interface CurrentAccount <<Abstract Product>> {
+ +segment(): Segment
+ +description(): String
+}
+interface TariffPlan <<Abstract Product>> {
+ +segment(): Segment
+ +description(): String
+}
+class RetailFactory <<Concrete Factory>> {
+ {static} +SEGMENT: Segment
+ +segment(): Segment
+ +createCard(): Card
+ +createAccount(): CurrentAccount
+ +createTariff(): TariffPlan
+}
+BankingProductFactory <|.. RetailFactory
+class RetailCard <<Concrete Product>> {
+ +segment(): Segment
+ +description(): String
+}
+Card <|.. RetailCard
+RetailFactory ..> RetailCard : creates
+class RetailCurrentAccount <<Concrete Product>> {
+ +segment(): Segment
+ +description(): String
+}
+CurrentAccount <|.. RetailCurrentAccount
+RetailFactory ..> RetailCurrentAccount : creates
+class RetailTariffPlan <<Concrete Product>> {
+ +segment(): Segment
+ +description(): String
+}
+TariffPlan <|.. RetailTariffPlan
+RetailFactory ..> RetailTariffPlan : creates
+class PremiumFactory <<Concrete Factory>> {
+ {static} +SEGMENT: Segment
+ +segment(): Segment
+ +createCard(): Card
+ +createAccount(): CurrentAccount
+ +createTariff(): TariffPlan
+}
+BankingProductFactory <|.. PremiumFactory
+class PremiumCard <<Concrete Product>> {
+ +segment(): Segment
+ +description(): String
+}
+Card <|.. PremiumCard
+PremiumFactory ..> PremiumCard : creates
+class PremiumCurrentAccount <<Concrete Product>> {
+ +segment(): Segment
+ +description(): String
+}
+CurrentAccount <|.. PremiumCurrentAccount
+PremiumFactory ..> PremiumCurrentAccount : creates
+class PremiumTariffPlan <<Concrete Product>> {
+ +segment(): Segment
+ +description(): String
+}
+TariffPlan <|.. PremiumTariffPlan
+PremiumFactory ..> PremiumTariffPlan : creates
+class BusinessFactory <<Concrete Factory>> {
+ {static} +SEGMENT: Segment
+ +segment(): Segment
+ +createCard(): Card
+ +createAccount(): CurrentAccount
+ +createTariff(): TariffPlan
+}
+BankingProductFactory <|.. BusinessFactory
+class BusinessCard <<Concrete Product>> {
+ +segment(): Segment
+ +description(): String
+}
+Card <|.. BusinessCard
+BusinessFactory ..> BusinessCard : creates
+class BusinessCurrentAccount <<Concrete Product>> {
+ +segment(): Segment
+ +description(): String
+}
+CurrentAccount <|.. BusinessCurrentAccount
+BusinessFactory ..> BusinessCurrentAccount : creates
+class BusinessTariffPlan <<Concrete Product>> {
+ +segment(): Segment
+ +description(): String
+}
+TariffPlan <|.. BusinessTariffPlan
+BusinessFactory ..> BusinessTariffPlan : creates
+class StudentFactory <<Concrete Factory>> {
+ {static} +SEGMENT: Segment
+ +segment(): Segment
+ +createCard(): Card
+ +createAccount(): CurrentAccount
+ +createTariff(): TariffPlan
+}
+BankingProductFactory <|.. StudentFactory
+class StudentCard <<Concrete Product>> {
+ +segment(): Segment
+ +description(): String
+}
+Card <|.. StudentCard
+StudentFactory ..> StudentCard : creates
+class StudentCurrentAccount <<Concrete Product>> {
+ +segment(): Segment
+ +description(): String
+}
+CurrentAccount <|.. StudentCurrentAccount
+StudentFactory ..> StudentCurrentAccount : creates
+class StudentTariffPlan <<Concrete Product>> {
+ +segment(): Segment
+ +description(): String
+}
+TariffPlan <|.. StudentTariffPlan
+StudentFactory ..> StudentTariffPlan : creates
+note bottom of BankingPackage
+Private constructor; mismatched segments are rejected.
+Dependency arrows have no persistent multiplicity.
+end note
+@enduml
