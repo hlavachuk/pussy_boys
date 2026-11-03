@@ -1,0 +1,94 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+title Завдання 3 — Factory Method
+abstract class StatementGenerator <<Creator>> {
+ +generate(source: List<Transaction>, from: LocalDate, to: LocalDate, recipient: String): StatementDocument
+ {abstract} #createDocument(data: StatementData): StatementDocument
+}
+interface StatementDocument <<Product>> {
+ +format(): String
+ +render(): String
+}
+class StatementData <<Immutable Data>> {
+ -from: LocalDate
+ -to: LocalDate
+ -transactions: List<Transaction>
+ -income: BigDecimal
+ -expense: BigDecimal
+ +from(): LocalDate
+ +to(): LocalDate
+ +transactions(): List<Transaction>
+ +income(): BigDecimal
+ +expense(): BigDecimal
+ +net(): BigDecimal
+ +summary(): String
+}
+class Transaction <<Value Object>> {
+ -date: LocalDate
+ -description: String
+ -amount: BigDecimal
+ +date(): LocalDate
+ +description(): String
+ +amount(): BigDecimal
+}
+StatementData "0..*" o-- "0..*" Transaction : immutable shared values
+StatementGenerator ..> StatementData : calculates
+StatementGenerator ..> StatementDocument : creates via factory method
+class ClientStatementGenerator <<Concrete Creator>> {
+ #createDocument(data: StatementData): StatementDocument
+}
+StatementGenerator <|-- ClientStatementGenerator
+class PdfDocument <<Concrete Product>> {
+ -data: StatementData
+ +PdfDocument(data: StatementData)
+ +format(): String
+ +render(): String
+}
+StatementDocument <|.. PdfDocument
+ClientStatementGenerator ..> PdfDocument : creates
+PdfDocument "0..*" --> "1" StatementData
+class TaxStatementGenerator <<Concrete Creator>> {
+ #createDocument(data: StatementData): StatementDocument
+}
+StatementGenerator <|-- TaxStatementGenerator
+class XmlDocument <<Concrete Product>> {
+ -data: StatementData
+ +XmlDocument(data: StatementData)
+ +format(): String
+ +render(): String
+}
+StatementDocument <|.. XmlDocument
+TaxStatementGenerator ..> XmlDocument : creates
+XmlDocument "0..*" --> "1" StatementData
+class AccountingStatementGenerator <<Concrete Creator>> {
+ #createDocument(data: StatementData): StatementDocument
+}
+StatementGenerator <|-- AccountingStatementGenerator
+class CsvDocument <<Concrete Product>> {
+ -data: StatementData
+ +CsvDocument(data: StatementData)
+ +format(): String
+ +render(): String
+}
+StatementDocument <|.. CsvDocument
+AccountingStatementGenerator ..> CsvDocument : creates
+CsvDocument "0..*" --> "1" StatementData
+class AuditorStatementGenerator <<Concrete Creator>> {
+ #createDocument(data: StatementData): StatementDocument
+}
+StatementGenerator <|-- AuditorStatementGenerator
+class AuditDocument <<Concrete Product>> {
+ -data: StatementData
+ +AuditDocument(data: StatementData)
+ +format(): String
+ +render(): String
+}
+StatementDocument <|.. AuditDocument
+AuditorStatementGenerator ..> AuditDocument : creates
+AuditDocument "0..*" --> "1" StatementData
+note bottom of StatementGenerator
+generate() is final: select, total, create, send.
+No recipient-based branching.
+end note
+@enduml

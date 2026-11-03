@@ -1,0 +1,60 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+title Завдання 1 — Builder
+class LoanApplication <<Product>> {
+ -client: String
+ -amount: BigDecimal
+ -termMonths: int
+ -purpose: String
+ -collateral: String
+ -guarantor: String
+ -incomeCertificate: String
+ -insured: boolean
+ -LoanApplication(b: Builder)
+ +getClient(): String
+ +getAmount(): BigDecimal
+ +getTermMonths(): int
+ +getPurpose(): String
+ +getCollateral(): String
+ +getGuarantor(): String
+ +getIncomeCertificate(): String
+ +isInsured(): boolean
+ +toString(): String
+}
+class "LoanApplication.Builder" as Builder <<Builder>> {
+ -client: String
+ -amount: BigDecimal
+ -termMonths: int
+ -purpose: String
+ -collateral: String
+ -guarantor: String
+ -incomeCertificate: String
+ -insured: boolean
+ +client(value: String): Builder
+ +amount(value: BigDecimal): Builder
+ +termMonths(value: int): Builder
+ +purpose(value: String): Builder
+ +collateral(value: String): Builder
+ +guarantor(value: String): Builder
+ +incomeCertificate(value: String): Builder
+ +insured(value: boolean): Builder
+ +build(): LoanApplication
+ {static} -fail(reason: String): void
+}
+class LoanDirector <<Director>> {
+ +consumerLoan(client: String): LoanApplication
+ +carLoan(client: String): LoanApplication
+}
+class Main <<Client>> {
+ {static} ~task1(): void
+}
+Builder ..> LoanApplication : creates one per build()
+LoanDirector ..> Builder : uses local builder
+Main ..> LoanDirector
+Main ..> Builder
+note bottom of LoanApplication
+ final class; all fields private final
+ only private constructor
+end note
+@enduml
