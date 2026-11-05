@@ -1,0 +1,44 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 14 - Variant 7 - task2_observer
+interface Observer <<Observer>> {
++update(rate: BigDecimal): void
+}
+class RateService <<Subject>> {
+-observers: Set<Observer>
+-rate: BigDecimal
++subscribe(observer: Observer): void
++unsubscribe(observer: Observer): void
++setRate(rate: BigDecimal): void
+}
+RateService "1" o-- "0..*" Observer
+class BranchBoard <<ConcreteObserver>> {
++update(rate: BigDecimal): void
+}
+Observer <|.. BranchBoard
+class OnlineBanking <<ConcreteObserver>> {
++update(rate: BigDecimal): void
+}
+Observer <|.. OnlineBanking
+class Conversion <<ConcreteObserver>> {
+-rate: BigDecimal
++update(rate: BigDecimal): void
++convert(eur: BigDecimal): BigDecimal
+}
+Observer <|.. Conversion
+class ClientAlert <<ConcreteObserver>> {
+-threshold: BigDecimal
+-notifications: int
++notifications(): int
++update(rate: BigDecimal): void
+}
+Observer <|.. ClientAlert
+class MobileApp <<ConcreteObserver>> {
++update(rate: BigDecimal): void
+}
+Observer <|.. MobileApp
+
+@enduml
