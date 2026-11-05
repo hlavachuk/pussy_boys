@@ -1,0 +1,40 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 11 - Variant 7 - task1_proxy
+interface Bureau <<Subject>> {
++history(client: String, user: User, day: LocalDate): String
+}
+class PaidBureau <<RealSubject>> {
+-requests: int
++requests(): int
++history(client: String, user: User, day: LocalDate): String
+}
+class BureauProxy <<Proxy>> {
+-real: Bureau
+-cache: Map<Key, String>
++history(client: String, user: User, day: LocalDate): String
+}
+class Key <<CacheKey>> {
+-client: String
+-day: LocalDate
+}
+class User <<Context>> {
+-name: String
+-role: Role
+}
+class Lending <<Client>> {
+-bureau: Bureau
++check(client: String, user: User, day: LocalDate): String
+}
+Bureau <|.. PaidBureau
+Bureau <|.. BureauProxy
+Lending "1" --> "1" Bureau
+BureauProxy "1" --> "1" Bureau : real
+BureauProxy "1" *-- "0..*" Key : cache keys
+Bureau ..> User
+note bottom of BureauProxy : Authorization before cache lookup.
+
+@enduml
