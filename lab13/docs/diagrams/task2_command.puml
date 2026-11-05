@@ -1,0 +1,60 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 13 - Variant 7 - task2_command
+interface Command <<Command>> {
++execute(day: LocalDate): void
++reverse(day: LocalDate): void
++cancel(): void
++due(): LocalDate
++pending(): boolean
++description(): String
+}
+abstract class PaymentCommand <<BaseCommand>> {
+-source: Account
+-target: Account
+-amount: BigDecimal
+-due: LocalDate
+-executedOn: LocalDate
+-state: State
++execute(day: LocalDate): void
++reverse(day: LocalDate): void
++cancel(): void
+}
+class Account <<Receiver>> {
+-name: String
+-balance: BigDecimal
++balance(): BigDecimal
++debit(amount: BigDecimal): void
++credit(amount: BigDecimal): void
+}
+class Scheduler <<Invoker>> {
+-commands: List<Command>
+-today: LocalDate
++enqueue(command: Command): void
++advanceTo(day: LocalDate): void
++cancel(command: Command): void
++reverse(command: Command): void
++scheduleRecurring(factory, first, intervalDays, occurrences): void
++printQueue(): void
+}
+Command <|.. PaymentCommand
+Scheduler "1" o-- "0..*" Command
+PaymentCommand "0..*" --> "1" Account : source
+PaymentCommand "0..*" --> "1" Account : target
+class Transfer <<ConcreteCommand>> {
++Transfer(source, target, amount, due)
+}
+PaymentCommand <|-- Transfer
+class Utilities <<ConcreteCommand>> {
++Utilities(source, target, amount, due)
+}
+PaymentCommand <|-- Utilities
+class DepositTopUp <<ConcreteCommand>> {
++DepositTopUp(source, target, amount, due)
+}
+PaymentCommand <|-- DepositTopUp
+
+@enduml

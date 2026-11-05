@@ -1,0 +1,48 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 13 - Variant 7 - task1_chain
+class Application <<Request>> {
+-client: String
+-amount: BigDecimal
+}
+abstract class Handler <<Handler>> {
+#next: Handler
++then(next: Handler): Handler
+#forward(app: Application): String
++handle(app: Application): String
+}
+class Approver <<ConcreteHandler>> {
+-name: String
+-limit: BigDecimal
++setLimit(limit: BigDecimal): void
++handle(app: Application): String
+}
+Handler "0..*" --> "0..1" Handler : next
+Handler <|-- Approver
+Handler ..> Application
+class CreditManager <<ApprovalLevel>> {
++CreditManager()
+}
+Approver <|-- CreditManager
+class BranchHead <<ApprovalLevel>> {
++BranchHead()
+}
+Approver <|-- BranchHead
+class Committee <<ApprovalLevel>> {
++Committee()
+}
+Approver <|-- Committee
+class Board <<ConcreteHandler>> {
++handle(app: Application): String
+}
+Handler <|-- Board
+class SecurityCheck <<ConcreteHandler>> {
+-threshold: BigDecimal
++handle(app: Application): String
+}
+Handler <|-- SecurityCheck
+
+@enduml
