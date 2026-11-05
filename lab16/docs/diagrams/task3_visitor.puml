@@ -1,0 +1,75 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 16 - Variant 7 - task3_visitor
+interface Product <<Element>> {
++accept(visitor: Visitor): void
++amount(): BigDecimal
+}
+interface Visitor <<Visitor>> {
++visit(deposit: Deposit): void
++visit(loan: Loan): void
++visit(card: Card): void
++visit(investment: Investment): void
+}
+class Portfolio <<ObjectStructure>> {
+-products: List<Product>
++accept(visitor: Visitor): void
+}
+abstract class TotalVisitor <<BaseVisitor>> {
+-total: BigDecimal
+#add(type: String, amount: BigDecimal, rate: String): void
++total(): BigDecimal
+}
+Portfolio "1" o-- "0..*" Product
+Product ..> Visitor : double dispatch
+Visitor <|.. TotalVisitor
+class Deposit <<ConcreteElement>> {
+-amount: BigDecimal
++accept(visitor: Visitor): void
+}
+Product <|.. Deposit
+Visitor ..> Deposit
+class Loan <<ConcreteElement>> {
+-amount: BigDecimal
++accept(visitor: Visitor): void
+}
+Product <|.. Loan
+Visitor ..> Loan
+class Card <<ConcreteElement>> {
+-amount: BigDecimal
++accept(visitor: Visitor): void
+}
+Product <|.. Card
+Visitor ..> Card
+class Investment <<ConcreteElement>> {
+-amount: BigDecimal
++accept(visitor: Visitor): void
+}
+Product <|.. Investment
+Visitor ..> Investment
+class Reserves <<ConcreteVisitor>> {
++visit(deposit: Deposit): void
++visit(loan: Loan): void
++visit(card: Card): void
++visit(investment: Investment): void
+}
+TotalVisitor <|-- Reserves
+class Profitability <<ConcreteVisitor>> {
++visit(deposit: Deposit): void
++visit(loan: Loan): void
++visit(card: Card): void
++visit(investment: Investment): void
+}
+TotalVisitor <|-- Profitability
+class ClientReport <<ConcreteVisitor>> {
++visit(deposit: Deposit): void
++visit(loan: Loan): void
++visit(card: Card): void
++visit(investment: Investment): void
+}
+Visitor <|.. ClientReport
+
+@enduml
