@@ -1,0 +1,53 @@
+[0001] [Main] 1. Mediator: видача кредиту
+[0002] [Manager] Подія SUBMITTED: Олена
+[0003] [LoanCoordinator] Отримано SUBMITTED від Manager
+[0004] [Scoring] Подія CHECK_PASSED: Олена
+[0005] [LoanCoordinator] Отримано CHECK_PASSED від Scoring
+[0006] [Security] Подія CHECK_PASSED: Олена
+[0007] [LoanCoordinator] Отримано CHECK_PASSED від Security
+[0008] [Legal] Підготовлено договір; клієнт підписав
+[0009] [Legal] Подія SIGNED: Олена
+[0010] [LoanCoordinator] Отримано SIGNED від Legal
+[0011] [Cashier] Видано 300000 грн
+[0012] [Cashier] Подія PAID: Олена
+[0013] [LoanCoordinator] Отримано PAID від Cashier
+[0014] [Manager] Кредит видано після всіх перевірок і підписання
+[0015] [Manager] Подія SUBMITTED: Іван
+[0016] [LoanCoordinator] Отримано SUBMITTED від Manager
+[0017] [Scoring] Подія CHECK_PASSED: Іван
+[0018] [LoanCoordinator] Отримано CHECK_PASSED від Scoring
+[0019] [Security] Подія CHECK_FAILED: Іван
+[0020] [LoanCoordinator] Отримано CHECK_FAILED від Security
+[0021] [Manager] Відмова: процес зупинено, кошти не видаються
+[0022] [Main] Підключено оцінювача застави, існуючих учасників не змінено
+[0023] [Manager] Подія SUBMITTED: Марія
+[0024] [LoanCoordinator] Отримано SUBMITTED від Manager
+[0025] [Scoring] Подія CHECK_PASSED: Марія
+[0026] [LoanCoordinator] Отримано CHECK_PASSED від Scoring
+[0027] [Security] Подія CHECK_PASSED: Марія
+[0028] [LoanCoordinator] Отримано CHECK_PASSED від Security
+[0029] [CollateralAppraiser] Подія CHECK_PASSED: Марія
+[0030] [LoanCoordinator] Отримано CHECK_PASSED від CollateralAppraiser
+[0031] [Legal] Підготовлено договір; клієнт підписав
+[0032] [Legal] Подія SIGNED: Марія
+[0033] [LoanCoordinator] Отримано SIGNED від Legal
+[0034] [Cashier] Видано 500000 грн
+[0035] [Cashier] Подія PAID: Марія
+[0036] [LoanCoordinator] Отримано PAID від Cashier
+[0037] [Manager] Кредит видано після всіх перевірок і підписання
+[0038] [Main] 2. Observer: зміна курсу валют
+[0039] [RateService] Новий курс 41.50
+[0040] [BranchBoard] Табло оновлено: 41.50
+[0041] [OnlineBanking] Курс у банкінгу: 41.50
+[0042] [Conversion] Курс конвертації: 41.50
+[0043] [RateService] Новий курс 40.90
+[0044] [BranchBoard] Табло оновлено: 40.90
+[0045] [OnlineBanking] Курс у банкінгу: 40.90
+[0046] [ClientAlert] Сповіщення клієнту: курс 40.90 досяг порогу 41.00
+[0047] [Conversion] Курс конвертації: 40.90
+[0048] [Main] Клієнт відписується; підключається мобільний застосунок
+[0049] [RateService] Новий курс 40.80
+[0050] [BranchBoard] Табло оновлено: 40.80
+[0051] [OnlineBanking] Курс у банкінгу: 40.80
+[0052] [Conversion] Курс конвертації: 40.80
+[0053] [MobileApp] Мобільний застосунок отримав 40.80

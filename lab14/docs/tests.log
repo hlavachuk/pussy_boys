@@ -1,0 +1,60 @@
+[0001] [Manager] Подія SUBMITTED: A
+[0002] [LoanCoordinator] Отримано SUBMITTED від Manager
+[0003] [Scoring] Подія CHECK_PASSED: A
+[0004] [LoanCoordinator] Отримано CHECK_PASSED від Scoring
+[0005] [Security] Подія CHECK_PASSED: A
+[0006] [LoanCoordinator] Отримано CHECK_PASSED від Security
+[0007] [Legal] Підготовлено договір; клієнт підписав
+[0008] [Legal] Подія SIGNED: A
+[0009] [LoanCoordinator] Отримано SIGNED від Legal
+[0010] [Cashier] Видано 100000 грн
+[0011] [Cashier] Подія PAID: A
+[0012] [LoanCoordinator] Отримано PAID від Cashier
+[0013] [Manager] Кредит видано після всіх перевірок і підписання
+[0014] [Manager] Подія SUBMITTED: B
+[0015] [LoanCoordinator] Отримано SUBMITTED від Manager
+[0016] [Scoring] Подія CHECK_PASSED: B
+[0017] [LoanCoordinator] Отримано CHECK_PASSED від Scoring
+[0018] [Security] Подія CHECK_FAILED: B
+[0019] [LoanCoordinator] Отримано CHECK_FAILED від Security
+[0020] [Manager] Відмова: процес зупинено, кошти не видаються
+[0021] [Manager] Подія SUBMITTED: C
+[0022] [LoanCoordinator] Отримано SUBMITTED від Manager
+[0023] [Scoring] Подія CHECK_PASSED: C
+[0024] [LoanCoordinator] Отримано CHECK_PASSED від Scoring
+[0025] [Security] Подія CHECK_PASSED: C
+[0026] [LoanCoordinator] Отримано CHECK_PASSED від Security
+[0027] [CollateralAppraiser] Подія CHECK_PASSED: C
+[0028] [LoanCoordinator] Отримано CHECK_PASSED від CollateralAppraiser
+[0029] [Legal] Підготовлено договір; клієнт підписав
+[0030] [Legal] Подія SIGNED: C
+[0031] [LoanCoordinator] Отримано SIGNED від Legal
+[0032] [Cashier] Видано 100000 грн
+[0033] [Cashier] Подія PAID: C
+[0034] [LoanCoordinator] Отримано PAID від Cashier
+[0035] [Manager] Кредит видано після всіх перевірок і підписання
+[0036] [Manager] Подія SUBMITTED: D
+[0037] [LoanCoordinator] Отримано SUBMITTED від Manager
+[0038] [Scoring] Подія CHECK_PASSED: D
+[0039] [LoanCoordinator] Отримано CHECK_PASSED від Scoring
+[0040] [Security] Подія CHECK_PASSED: D
+[0041] [LoanCoordinator] Отримано CHECK_PASSED від Security
+[0042] [CollateralAppraiser] Подія CHECK_PASSED: D
+[0043] [LoanCoordinator] Отримано CHECK_PASSED від CollateralAppraiser
+[0044] [Anonymous] Подія CHECK_FAILED: D
+[0045] [LoanCoordinator] Отримано CHECK_FAILED від 
+[0046] [Manager] Відмова: процес зупинено, кошти не видаються
+[0047] [RateService] Новий курс 41.50
+[0048] [Conversion] Курс конвертації: 41.50
+[0049] [RateService] Новий курс 40.90
+[0050] [ClientAlert] Сповіщення клієнту: курс 40.90 досяг порогу 41.00
+[0051] [Conversion] Курс конвертації: 40.90
+[0052] [RateService] Новий курс 41.00
+[0053] [ClientAlert] Сповіщення клієнту: курс 41.00 досяг порогу 41.00
+[0054] [Conversion] Курс конвертації: 41.00
+[0055] [RateService] Новий курс 40.80
+[0056] [Conversion] Курс конвертації: 40.80
+[0057] [RateService] Новий курс 40.70
+[0058] [Conversion] Курс конвертації: 40.70
+[0059] [MobileApp] Мобільний застосунок отримав 40.70
+[0060] [Tests] PASS: 12 checks

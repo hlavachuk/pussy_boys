@@ -1,0 +1,71 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 14 - Variant 7 - task1_mediator
+interface Mediator <<Mediator>> {
++notify(sender: Participant, event: Event, app: Application): void
+}
+abstract class Participant <<Colleague>> {
+#mediator: Mediator
+#emit(event: Event, app: Application): void
+}
+class LoanCoordinator <<ConcreteMediator>> {
+-manager: Manager
+-legal: Legal
+-cashier: Cashier
+-checks: List<Check>
+-passed: Set<Participant>
+-current: Application
+-stage: Stage
++addCheck(check: Check): void
++manager(): Manager
++payouts(): int
++notify(sender, event, app): void
+}
+class Manager <<ConcreteColleague>> {
++submit(app: Application): void
++inform(result: String): void
+}
+class Legal <<ConcreteColleague>> {
++prepareAndSign(app: Application): void
+}
+class Cashier <<ConcreteColleague>> {
+-payouts: int
++pay(app: Application): void
++payouts(): int
+}
+abstract class Check <<Colleague>> {
++check(app: Application): void
+}
+Mediator <|.. LoanCoordinator
+Participant "0..*" --> "1" Mediator
+Participant <|-- Manager
+Participant <|-- Legal
+Participant <|-- Cashier
+Participant <|-- Check
+LoanCoordinator "1" *-- "1" Manager
+LoanCoordinator "1" *-- "1" Legal
+LoanCoordinator "1" *-- "1" Cashier
+LoanCoordinator "1" o-- "2..*" Check
+class Scoring <<ConcreteColleague>> {
++check(app: Application): void
+}
+Check <|-- Scoring
+class Security <<ConcreteColleague>> {
++check(app: Application): void
+}
+Check <|-- Security
+class CollateralAppraiser <<ConcreteColleague>> {
++check(app: Application): void
+}
+Check <|-- CollateralAppraiser
+class Application <<Context>> {
+-client: String
+-amount: BigDecimal
+-securityPass: boolean
+}
+Mediator ..> Application
+
+@enduml
