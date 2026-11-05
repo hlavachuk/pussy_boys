@@ -1,0 +1,42 @@
+[0001] [Main] 1. Template Method: закриття продуктів
+[0002] [ClosingProcedure] 1. Ідентифікувати клієнта: Олена
+[0003] [ClosingProcedure] 2. Перевірити заборгованість: 0
+[0004] [ClosingProcedure] 3. Фінальні розрахунки DepositClosing
+[0005] [DepositClosing] Нараховано відсотки 12000
+[0006] [DepositClosing] Утримано умовний податок 20%: 2400.00
+[0007] [ClosingProcedure] 4. Продукт закрито
+[0008] [ClosingProcedure] 5. Довідка: банківський продукт клієнта Олена закрито
+[0009] [ClosingProcedure] 1. Ідентифікувати клієнта: Іван
+[0010] [ClosingProcedure] 2. Перевірити заборгованість: 500
+[0011] [ClosingProcedure] Зупинка: є заборгованість
+[0012] [ClosingProcedure] 1. Ідентифікувати клієнта: Олена
+[0013] [ClosingProcedure] 2. Перевірити заборгованість: 0
+[0014] [ClosingProcedure] 3. Фінальні розрахунки CardClosing
+[0015] [CardClosing] Повернено залишок, припинено комісію картки
+[0016] [ClosingProcedure] Податок: додаткове утримання не потрібне
+[0017] [ClosingProcedure] 4. Продукт закрито
+[0018] [ClosingProcedure] 5. Довідка: банківський продукт клієнта Олена закрито
+[0019] [Main] 2. State: картка до операцій - Issued
+[0020] [Card] Стан: Issued -> Active
+[0021] [Active] Платіж проведено: 100
+[0022] [Active] Неправильний PIN: 1/3
+[0023] [Active] Неправильний PIN: 2/3
+[0024] [Active] Неправильний PIN: 3/3
+[0025] [Card] Стан: Active -> TemporarilyBlocked
+[0026] [TemporarilyBlocked] Відмова: Платити недоступно у цьому стані
+[0027] [Card] Стан: TemporarilyBlocked -> Active
+[0028] [Card] Стан: Active -> PermanentlyBlocked
+[0029] [PermanentlyBlocked] Відмова: Розблокувати недоступно у цьому стані
+[0030] [Main] Кінцевий стан: PermanentlyBlocked
+[0031] [Card] Стан: PermanentlyBlocked -> Issued
+[0032] [Card] Стан: Issued -> Active
+[0033] [Card] Стан: Active -> Expired
+[0034] [Expired] Відмова: Платити недоступно у цьому стані
+[0035] [Card] Стан: Expired -> Issued
+[0036] [Main] 3. Strategy: умовна базова річна ставка 12%
+[0037] [Deposit/Simple] 100000 грн, 12 місяців: дохід 12000.00
+[0038] [Deposit/MonthlyCapitalization] 100000 грн, 12 місяців: дохід 12682.50
+[0039] [Deposit/DailyAccrual] 100000 грн, 12 місяців: дохід 11835.62
+[0040] [Main] Пролонгація: зміна схеми на ступінчасту
+[0041] [Deposit/Tiered] 100000 грн, 12 місяців: дохід 13000.00
+[0042] [Deposit/BonusRate] 100000 грн, 12 місяців: дохід 14000.00

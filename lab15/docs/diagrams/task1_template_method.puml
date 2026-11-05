@@ -1,0 +1,33 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 15 - Variant 7 - task1_template_method
+abstract class ClosingProcedure <<AbstractClass>> {
+-client: String
+-debt: BigDecimal
+-closed: boolean
++close(): boolean {final}
+#settle(): void {abstract}
+#withholdTax(): void
++certificate(): String {final}
++closed(): boolean {final}
+}
+class DepositClosing <<ConcreteClass>> {
+-interest: BigDecimal
+#settle(): void
+#withholdTax(): void
+}
+ClosingProcedure <|-- DepositClosing
+class LoanClosing <<ConcreteClass>> {
+#settle(): void
+}
+ClosingProcedure <|-- LoanClosing
+class CardClosing <<ConcreteClass>> {
+#settle(): void
+}
+ClosingProcedure <|-- CardClosing
+note bottom of ClosingProcedure : final close() fixes the step order.
+
+@enduml
