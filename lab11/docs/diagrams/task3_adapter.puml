@@ -1,0 +1,37 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 11 - Variant 7 - task3_adapter
+interface PaymentGateway <<Target>> {
++send(payment: Payment): Status
+}
+class SwiftAdapter <<Adapter>> {
+-library: SwiftLibrary
++send(p: Payment): Status
+}
+class SwiftLibrary <<Adaptee>> {
++transmit(message: String): String
+}
+class Treasury <<Client>> {
+-gateway: PaymentGateway
++pay(payment: Payment): Status
+}
+class Payment <<Request>> {
+-sender: String
+-recipient: String
+-amount: BigDecimal
+-currency: String
+}
+class Status <<Result>> {
+-accepted: boolean
+-reason: String
+}
+PaymentGateway <|.. SwiftAdapter
+SwiftAdapter "1" --> "1" SwiftLibrary
+Treasury "1" --> "1" PaymentGateway
+PaymentGateway ..> Payment
+PaymentGateway ..> Status
+
+@enduml

@@ -1,0 +1,46 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 11 - Variant 7 - task2_decorator
+interface Card <<Component>> {
++description(): String
++monthlyFee(): BigDecimal
+}
+class BasicCard <<ConcreteComponent>> {
++description(): String
++monthlyFee(): BigDecimal
+}
+abstract class Option <<Decorator>> {
+#wrapped: Card
+-name: String
+-fee: BigDecimal
++description(): String
++monthlyFee(): BigDecimal
+}
+Card <|.. BasicCard
+Card <|.. Option
+Option "1" o-- "1" Card : wrapped
+class Cashback <<ConcreteDecorator>> {
++Cashback(card: Card)
+}
+Option <|-- Cashback
+class TravelInsurance <<ConcreteDecorator>> {
++TravelInsurance(card: Card)
+}
+Option <|-- TravelInsurance
+class Sms <<ConcreteDecorator>> {
++Sms(card: Card)
+}
+Option <|-- Sms
+class HigherLimit <<ConcreteDecorator>> {
++HigherLimit(card: Card)
+}
+Option <|-- HigherLimit
+class Lounge <<ConcreteDecorator>> {
++Lounge(card: Card)
+}
+Option <|-- Lounge
+
+@enduml

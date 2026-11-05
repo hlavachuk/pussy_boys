@@ -1,0 +1,48 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 11 - Variant 7 - task4_facade
+class OpeningFacade <<Facade>> {
+-identification: Identification
+-sanctions: Sanctions
+-accounts: Accounts
+-cards: Cards
+-online: OnlineBanking
+-contracts: Contracts
++open(client: String): String
+}
+class Channel <<Client>> {
+-name: String
+-facade: OpeningFacade
++open(client: String): String
+}
+Channel "0..*" --> "1" OpeningFacade
+class Identification <<Subsystem>> {
++verify(client: String): void
+}
+OpeningFacade "1" --> "1" Identification
+class Sanctions <<Subsystem>> {
++allowed(client: String): boolean
+}
+OpeningFacade "1" --> "1" Sanctions
+class Accounts <<Subsystem>> {
+-sequence: int
++create(client: String): String
+}
+OpeningFacade "1" --> "1" Accounts
+class Cards <<Subsystem>> {
++issue(account: String): void
+}
+OpeningFacade "1" --> "1" Cards
+class OnlineBanking <<Subsystem>> {
++connect(account: String): void
+}
+OpeningFacade "1" --> "1" OnlineBanking
+class Contracts <<Subsystem>> {
++send(account: String): void
+}
+OpeningFacade "1" --> "1" Contracts
+
+@enduml
