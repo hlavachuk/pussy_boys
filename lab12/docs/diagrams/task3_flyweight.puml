@@ -1,0 +1,29 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 12 - Variant 7 - task3_flyweight
+class Merchant <<Flyweight>> {
+-name: String
+-logo: String
+-category: String
+-mcc: String
+-address: String
+}
+class MerchantFactory <<FlyweightFactory>> {
+-merchants: Map<String, Merchant>
++get(id, name, logo, category, mcc, address: String): Merchant
++count(): int
+}
+class Operation <<Context>> {
+-amount: BigDecimal
+-date: LocalDate
+-account: String
+-merchant: Merchant
+}
+MerchantFactory "1" o-- "0..*" Merchant : interned by ID
+Operation "0..*" --> "1" Merchant : shared immutable state
+note bottom of Merchant : 20 objects for 50 000 operations.
+
+@enduml

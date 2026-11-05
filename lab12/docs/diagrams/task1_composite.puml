@@ -1,0 +1,33 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 12 - Variant 7 - task1_composite
+interface Unit <<Component>> {
++name(): String
++cash(): BigDecimal
++operations(): int
++print(indent: String): void
+}
+class CashDesk <<Leaf>> {
+-name: String
+-cash: BigDecimal
+-operations: int
++print(indent: String): void
+}
+class Department <<Composite>> {
+-name: String
+-children: List<Unit>
++add(unit: Unit): Department
++cash(): BigDecimal
++operations(): int
++print(indent: String): void
+-contains(target: Unit): boolean
+}
+Unit <|.. CashDesk
+Unit <|.. Department
+Department "0..*" o-- "0..*" Unit : children
+note bottom of Department : Recursive totals; cycle rejection.
+
+@enduml
