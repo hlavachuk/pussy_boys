@@ -1,0 +1,50 @@
+[0001] [ClosingProcedure] 1. Ідентифікувати клієнта: A
+[0002] [ClosingProcedure] 2. Перевірити заборгованість: 0
+[0003] [ClosingProcedure] 3. Фінальні розрахунки DepositClosing
+[0004] [DepositClosing] Нараховано відсотки 12000
+[0005] [DepositClosing] Утримано умовний податок 20%: 2400.00
+[0006] [ClosingProcedure] 4. Продукт закрито
+[0007] [ClosingProcedure] 5. Довідка: банківський продукт клієнта A закрито
+[0008] [ClosingProcedure] 1. Ідентифікувати клієнта: A
+[0009] [ClosingProcedure] 2. Перевірити заборгованість: 1
+[0010] [ClosingProcedure] Зупинка: є заборгованість
+[0011] [ClosingProcedure] 1. Ідентифікувати клієнта: A
+[0012] [ClosingProcedure] 2. Перевірити заборгованість: 0
+[0013] [ClosingProcedure] 3. Фінальні розрахунки CardClosing
+[0014] [CardClosing] Повернено залишок, припинено комісію картки
+[0015] [ClosingProcedure] Податок: додаткове утримання не потрібне
+[0016] [ClosingProcedure] 4. Продукт закрито
+[0017] [ClosingProcedure] 5. Довідка: банківський продукт клієнта A закрито
+[0018] [ClosingProcedure] 1. Ідентифікувати клієнта: A
+[0019] [ClosingProcedure] 2. Перевірити заборгованість: 0
+[0020] [ClosingProcedure] 3. Фінальні розрахунки LoanClosing
+[0021] [LoanClosing] Звірено остаточне погашення кредиту
+[0022] [ClosingProcedure] Податок: додаткове утримання не потрібне
+[0023] [ClosingProcedure] 4. Продукт закрито
+[0024] [ClosingProcedure] 5. Довідка: банківський продукт клієнта A закрито
+[0025] [Issued] Відмова: Платити недоступно у цьому стані
+[0026] [Card] Стан: Issued -> Active
+[0027] [Active] Неправильний PIN: 1/3
+[0028] [Active] Неправильний PIN: 2/3
+[0029] [Active] Неправильний PIN: 3/3
+[0030] [Card] Стан: Active -> TemporarilyBlocked
+[0031] [TemporarilyBlocked] Відмова: Платити недоступно у цьому стані
+[0032] [Card] Стан: TemporarilyBlocked -> Active
+[0033] [Active] Неправильний PIN: 1/3
+[0034] [Card] Стан: Active -> PermanentlyBlocked
+[0035] [PermanentlyBlocked] Відмова: Розблокувати недоступно у цьому стані
+[0036] [PermanentlyBlocked] Відмова: Зміна остаточного блокування на прострочення недоступно у цьому стані
+[0037] [Card] Стан: PermanentlyBlocked -> Issued
+[0038] [Card] Стан: Issued -> Active
+[0039] [Card] Стан: Active -> Expired
+[0040] [Expired] Відмова: Розблокувати недоступно у цьому стані
+[0041] [Card] Стан: Expired -> Issued
+[0042] [Card] Стан: Issued -> 
+[0043] [Anonymous] Відмова: Активувати недоступно у цьому стані
+[0044] [Deposit/Simple] 100000 грн, 12 місяців: дохід 12000.00
+[0045] [Deposit/MonthlyCapitalization] 100000 грн, 12 місяців: дохід 12682.50
+[0046] [Deposit/DailyAccrual] 100000 грн, 12 місяців: дохід 11835.62
+[0047] [Deposit/Tiered] 100000 грн, 12 місяців: дохід 13000.00
+[0048] [Deposit/BonusRate] 100000 грн, 12 місяців: дохід 14000.00
+[0049] [Deposit/Tiered] 99999 грн, 12 місяців: дохід 9999.90
+[0050] [Tests] PASS: 29 checks

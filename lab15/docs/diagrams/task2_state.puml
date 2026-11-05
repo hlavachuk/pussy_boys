@@ -1,0 +1,59 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 15 - Variant 7 - task2_state
+interface State <<State>> {
++activate(card: Card): void
++pay(card: Card, amount: BigDecimal): void
++wrongPin(card: Card): void
++unblock(card: Card): void
++blockForever(card: Card): void
++expire(card: Card): void
++reissue(card: Card): void
++denied(action: String): void
+}
+class Card <<Context>> {
+-state: State
++transition(state: State): void
++stateName(): String
++activate(): void
++pay(amount: BigDecimal): void
++wrongPin(): void
++unblock(): void
++blockForever(): void
++expire(): void
++reissue(): void
+}
+Card "1" *-- "1" State
+State ..> Card : transitions
+class Issued <<ConcreteState>> {
++activate(card: Card): void
++blockForever(card: Card): void
+}
+State <|.. Issued
+class Active <<ConcreteState>> {
+-failedPins: int
++pay(card: Card, amount: BigDecimal): void
++wrongPin(card: Card): void
++blockForever(card: Card): void
+}
+State <|.. Active
+class TemporarilyBlocked <<ConcreteState>> {
++unblock(card: Card): void
++blockForever(card: Card): void
+}
+State <|.. TemporarilyBlocked
+class PermanentlyBlocked <<ConcreteState>> {
++reissue(card: Card): void
++expire(card: Card): void
+}
+State <|.. PermanentlyBlocked
+class Expired <<ConcreteState>> {
++reissue(card: Card): void
++expire(card: Card): void
+}
+State <|.. Expired
+
+@enduml

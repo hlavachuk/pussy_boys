@@ -1,0 +1,44 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 15 - Variant 7 - task3_strategy
+interface Strategy <<Strategy>> {
++income(principal: BigDecimal, months: int): BigDecimal
+}
+class Deposit <<Context>> {
+-principal: BigDecimal
+-months: int
+-strategy: Strategy
++setStrategy(strategy: Strategy): void
++calculate(): BigDecimal
+}
+Deposit "0..*" --> "1" Strategy
+class Simple <<ConcreteStrategy>> {
+-annualRate: BigDecimal
++income(principal: BigDecimal, months: int): BigDecimal
+}
+Strategy <|.. Simple
+class MonthlyCapitalization <<ConcreteStrategy>> {
+-annualRate: BigDecimal
++income(principal: BigDecimal, months: int): BigDecimal
+}
+Strategy <|.. MonthlyCapitalization
+class DailyAccrual <<ConcreteStrategy>> {
+-annualRate: BigDecimal
++income(principal: BigDecimal, months: int): BigDecimal
+}
+Strategy <|.. DailyAccrual
+class Tiered <<ConcreteStrategy>> {
++income(principal: BigDecimal, months: int): BigDecimal
+}
+Strategy <|.. Tiered
+class BonusRate <<ConcreteStrategy>> {
++income(principal: BigDecimal, months: int): BigDecimal
+}
+Strategy <|.. BonusRate
+Tiered ..> Simple
+BonusRate ..> Simple
+
+@enduml
