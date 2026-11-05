@@ -1,0 +1,49 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 12 - Variant 7 - task2_bridge
+interface Delivery <<Implementor>> {
++deliver(content: String): String
+}
+abstract class Document <<Abstraction>> {
+-delivery: Delivery
++setDelivery(delivery: Delivery): void
+#content(): String
++issue(): String
+}
+Document "1" --> "1" Delivery
+class Receipt <<RefinedAbstraction>> {
+-payment: String
+#content(): String
+}
+Document <|-- Receipt
+class PaymentOrder <<RefinedAbstraction>> {
+-payment: String
+#content(): String
+}
+Document <|-- PaymentOrder
+class AccountStatement <<RefinedAbstraction>> {
+-account: String
+#content(): String
+}
+Document <|-- AccountStatement
+class Print <<ConcreteImplementor>> {
++deliver(content: String): String
+}
+Delivery <|.. Print
+class Pdf <<ConcreteImplementor>> {
++deliver(content: String): String
+}
+Delivery <|.. Pdf
+class Signed <<ConcreteImplementor>> {
++deliver(content: String): String
+}
+Delivery <|.. Signed
+class Diia <<ConcreteImplementor>> {
++deliver(content: String): String
+}
+Delivery <|.. Diia
+
+@enduml
