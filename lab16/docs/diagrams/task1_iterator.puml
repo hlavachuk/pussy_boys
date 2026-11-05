@@ -1,0 +1,49 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 16 - Variant 7 - task1_iterator
+class Archive <<Aggregate>> {
+-accounts: Map<String, Map<YearMonth, List<Operation>>>
++add(operation: Operation): void
+-snapshot(): List<Operation>
++latest(): Iterator<Operation>
++forYear(year: int): Iterator<Operation>
++monitoring(): Iterator<Operation>
+}
+class Operation <<Element>> {
+-id: String
+-account: String
+-date: LocalDate
+-amount: BigDecimal
+}
+interface Iterator <<Iterator>> {
++hasNext(): boolean
++next(): Operation
+}
+abstract class OperationIterator <<BaseIterator>> {
+-operations: List<Operation>
+-index: int
++hasNext(): boolean
++next(): Operation
+}
+Iterator <|.. OperationIterator
+Archive "1" o-- "0..*" Operation : accounts/months/blocks
+OperationIterator "1" o-- "0..*" Operation : immutable snapshot
+Archive ..> OperationIterator : creates
+class LatestIterator <<ConcreteIterator>> {
++LatestIterator(operations: List<Operation>)
+}
+OperationIterator <|-- LatestIterator
+class YearIterator <<ConcreteIterator>> {
++YearIterator(operations: List<Operation>, year: int)
+}
+OperationIterator <|-- YearIterator
+class MonitoringIterator <<ConcreteIterator>> {
++MonitoringIterator(operations: List<Operation>)
+}
+OperationIterator <|-- MonitoringIterator
+note bottom of OperationIterator : Independent cursor for each iterator.
+
+@enduml

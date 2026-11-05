@@ -1,0 +1,35 @@
+@startuml
+!pragma layout smetana
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+title Lab 16 - Variant 7 - task2_memento
+interface Checkpoint <<NarrowMemento>> {
+
+}
+class Snapshot <<Memento>> {
+-owner: Ledger
+-values: Map<String, BigDecimal>
+-Snapshot(owner: Ledger, values: Map)
+}
+class Ledger <<Originator>> {
+-balances: Map<String, BigDecimal>
++balance(account: String): BigDecimal
++adjust(account: String, delta: BigDecimal): void
++save(): Checkpoint
++restore(checkpoint: Checkpoint): void
++print(): void
+}
+class History <<Caretaker>> {
+-checkpoints: Map<String, Checkpoint>
++save(name: String, ledger: Ledger): void
++restore(name: String, ledger: Ledger): void
+}
+Checkpoint <|.. Snapshot
+History "1" o-- "0..*" Checkpoint
+History ..> Ledger
+Ledger ..> Snapshot : creates / restores
+Snapshot "0..*" --> "1" Ledger : owner
+note bottom of Snapshot : private static nested class of Ledger; immutable copy.
+
+@enduml

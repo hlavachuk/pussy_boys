@@ -1,0 +1,76 @@
+[0001] [Main] 1. Iterator: до обходів архів містить 14 операцій на двох рахунках
+[0002] [Main] 10 останніх операцій з усіх рахунків
+[0003] [LatestIterator] Курсор 0 -> 1: Operation[id=OP13, account=UA1, date=2027-01-01, amount=400000]
+[0004] [LatestIterator] Курсор 1 -> 2: Operation[id=OP12, account=UA0, date=2026-12-01, amount=450000]
+[0005] [LatestIterator] Курсор 2 -> 3: Operation[id=OP11, account=UA1, date=2026-11-01, amount=400000]
+[0006] [LatestIterator] Курсор 3 -> 4: Operation[id=OP10, account=UA0, date=2026-10-01, amount=400000]
+[0007] [LatestIterator] Курсор 4 -> 5: Operation[id=OP9, account=UA1, date=2026-09-01, amount=450000]
+[0008] [LatestIterator] Курсор 5 -> 6: Operation[id=OP8, account=UA0, date=2026-08-01, amount=400000]
+[0009] [LatestIterator] Курсор 6 -> 7: Operation[id=OP7, account=UA1, date=2026-07-01, amount=400000]
+[0010] [LatestIterator] Курсор 7 -> 8: Operation[id=OP6, account=UA0, date=2026-06-01, amount=450000]
+[0011] [LatestIterator] Курсор 8 -> 9: Operation[id=OP5, account=UA1, date=2026-05-01, amount=400000]
+[0012] [LatestIterator] Курсор 9 -> 10: Operation[id=OP4, account=UA0, date=2026-04-01, amount=400000]
+[0013] [Main] Податковий обхід за 2026 рік хронологічно
+[0014] [YearIterator] Курсор 0 -> 1: Operation[id=OP1, account=UA1, date=2026-01-01, amount=400000]
+[0015] [YearIterator] Курсор 1 -> 2: Operation[id=OP2, account=UA0, date=2026-02-01, amount=400000]
+[0016] [YearIterator] Курсор 2 -> 3: Operation[id=OP3, account=UA1, date=2026-03-01, amount=450000]
+[0017] [YearIterator] Курсор 3 -> 4: Operation[id=OP4, account=UA0, date=2026-04-01, amount=400000]
+[0018] [YearIterator] Курсор 4 -> 5: Operation[id=OP5, account=UA1, date=2026-05-01, amount=400000]
+[0019] [YearIterator] Курсор 5 -> 6: Operation[id=OP6, account=UA0, date=2026-06-01, amount=450000]
+[0020] [YearIterator] Курсор 6 -> 7: Operation[id=OP7, account=UA1, date=2026-07-01, amount=400000]
+[0021] [YearIterator] Курсор 7 -> 8: Operation[id=OP8, account=UA0, date=2026-08-01, amount=400000]
+[0022] [YearIterator] Курсор 8 -> 9: Operation[id=OP9, account=UA1, date=2026-09-01, amount=450000]
+[0023] [YearIterator] Курсор 9 -> 10: Operation[id=OP10, account=UA0, date=2026-10-01, amount=400000]
+[0024] [YearIterator] Курсор 10 -> 11: Operation[id=OP11, account=UA1, date=2026-11-01, amount=400000]
+[0025] [YearIterator] Курсор 11 -> 12: Operation[id=OP12, account=UA0, date=2026-12-01, amount=450000]
+[0026] [Main] Незалежні курсори: фінмоніторинг і онлайн-банкінг
+[0027] [MonitoringIterator] Курсор 0 -> 1: Operation[id=OP0, account=UA0, date=2025-12-01, amount=450000]
+[0028] [LatestIterator] Курсор 0 -> 1: Operation[id=OP13, account=UA1, date=2027-01-01, amount=400000]
+[0029] [MonitoringIterator] Курсор 1 -> 2: Operation[id=OP3, account=UA1, date=2026-03-01, amount=450000]
+[0030] [LatestIterator] Курсор 1 -> 2: Operation[id=OP12, account=UA0, date=2026-12-01, amount=450000]
+[0031] [MonitoringIterator] Курсор 2 -> 3: Operation[id=OP6, account=UA0, date=2026-06-01, amount=450000]
+[0032] [LatestIterator] Курсор 2 -> 3: Operation[id=OP11, account=UA1, date=2026-11-01, amount=400000]
+[0033] [MonitoringIterator] Курсор 3 -> 4: Operation[id=OP9, account=UA1, date=2026-09-01, amount=450000]
+[0034] [LatestIterator] Курсор 3 -> 4: Operation[id=OP10, account=UA0, date=2026-10-01, amount=400000]
+[0035] [MonitoringIterator] Курсор 4 -> 5: Operation[id=OP12, account=UA0, date=2026-12-01, amount=450000]
+[0036] [LatestIterator] Курсор 4 -> 5: Operation[id=OP9, account=UA1, date=2026-09-01, amount=450000]
+[0037] [Main] Після обходів архів незмінний, курсори незалежні
+[0038] [Main] 2. Memento: контрольні точки дня
+[0039] [Ledger] Залишки {UA1=10000, UA2=20000}
+[0040] [Ledger] Створено закритий знімок
+[0041] [History] Збережено точку Початок дня
+[0042] [Ledger] UA1: 10000 -> 11000
+[0043] [Ledger] UA2: 20000 -> 19500
+[0044] [Ledger] Створено закритий знімок
+[0045] [History] Збережено точку Перед коригуванням
+[0046] [Ledger] UA1: 11000 -> 2000
+[0047] [Ledger] UA2: 19500 -> 118500
+[0048] [History] Відновлюю Перед коригуванням
+[0049] [Ledger] До відновлення {UA1=2000, UA2=118500}
+[0050] [Ledger] Після відновлення {UA1=11000, UA2=19500}
+[0051] [Ledger] Залишки {UA1=11000, UA2=19500}
+[0052] [History] Відновлюю Початок дня
+[0053] [Ledger] До відновлення {UA1=11000, UA2=19500}
+[0054] [Ledger] Після відновлення {UA1=10000, UA2=20000}
+[0055] [Ledger] Залишки {UA1=10000, UA2=20000}
+[0056] [Main] 3. Visitor: умовні навчальні ставки резервів і прибутковості
+[0057] [Portfolio] Початок проходу Reserves; продуктів 4
+[0058] [Reserves] Депозит: 2000.00; підсумок 0 -> 2000.00
+[0059] [Reserves] Кредит: 10000.00; підсумок 2000.00 -> 12000.00
+[0060] [Reserves] Картка: 100.00; підсумок 12000.00 -> 12100.00
+[0061] [Reserves] Інвестиційний рахунок: 1500.00; підсумок 12100.00 -> 13600.00
+[0062] [Portfolio] Прохід завершено, склад портфеля незмінний
+[0063] [Main] Резерви: 13600.00
+[0064] [Portfolio] Початок проходу Profitability; продуктів 4
+[0065] [Profitability] Депозит - витрата банку: -12000.00; підсумок 0 -> -12000.00
+[0066] [Profitability] Кредит: 40000.00; підсумок -12000.00 -> 28000.00
+[0067] [Profitability] Картка: 200.00; підсумок 28000.00 -> 28200.00
+[0068] [Profitability] Інвестиційний рахунок: 500.00; підсумок 28200.00 -> 28700.00
+[0069] [Portfolio] Прохід завершено, склад портфеля незмінний
+[0070] [Main] Прибутковість: 28700.00
+[0071] [Portfolio] Початок проходу ClientReport; продуктів 4
+[0072] [ClientReport] Депозит: 100000
+[0073] [ClientReport] Кредит: 200000
+[0074] [ClientReport] Картка: 10000
+[0075] [ClientReport] Інвестиційний рахунок: 50000
+[0076] [Portfolio] Прохід завершено, склад портфеля незмінний

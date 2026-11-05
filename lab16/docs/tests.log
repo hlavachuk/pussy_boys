@@ -1,0 +1,50 @@
+[0001] [LatestIterator] Курсор 0 -> 1: Operation[id=last, account=UA2, date=2027-01-01, amount=1]
+[0002] [LatestIterator] Курсор 1 -> 2: Operation[id=debit, account=UA1, date=2026-11-05, amount=-400000.01]
+[0003] [LatestIterator] Курсор 0 -> 1: Operation[id=last, account=UA2, date=2027-01-01, amount=1]
+[0004] [YearIterator] Курсор 0 -> 1: Operation[id=boundary, account=UA2, date=2026-01-01, amount=400000]
+[0005] [YearIterator] Курсор 1 -> 2: Operation[id=debit, account=UA1, date=2026-11-05, amount=-400000.01]
+[0006] [MonitoringIterator] Курсор 0 -> 1: Operation[id=old, account=UA1, date=2025-12-31, amount=500000]
+[0007] [MonitoringIterator] Курсор 1 -> 2: Operation[id=debit, account=UA1, date=2026-11-05, amount=-400000.01]
+[0008] [LatestIterator] Курсор 0 -> 1: Operation[id=last, account=UA2, date=2027-01-01, amount=1]
+[0009] [Ledger] Створено закритий знімок
+[0010] [History] Збережено точку start
+[0011] [Ledger] A: 10000 -> 11000
+[0012] [Ledger] B: 20000 -> 19500
+[0013] [Ledger] Створено закритий знімок
+[0014] [History] Збережено точку second
+[0015] [Ledger] A: 11000 -> 2000
+[0016] [Ledger] B: 19500 -> 118500
+[0017] [History] Відновлюю second
+[0018] [Ledger] До відновлення {A=2000, B=118500}
+[0019] [Ledger] Після відновлення {A=11000, B=19500}
+[0020] [History] Відновлюю start
+[0021] [Ledger] До відновлення {A=11000, B=19500}
+[0022] [Ledger] Після відновлення {A=10000, B=20000}
+[0023] [Ledger] A: 10000 -> 10010
+[0024] [History] Відновлюю second
+[0025] [Ledger] До відновлення {A=10010, B=20000}
+[0026] [Ledger] Після відновлення {A=11000, B=19500}
+[0027] [Ledger] Створено закритий знімок
+[0028] [Portfolio] Початок проходу Reserves; продуктів 4
+[0029] [Reserves] Депозит: 2000.00; підсумок 0 -> 2000.00
+[0030] [Reserves] Кредит: 10000.00; підсумок 2000.00 -> 12000.00
+[0031] [Reserves] Картка: 100.00; підсумок 12000.00 -> 12100.00
+[0032] [Reserves] Інвестиційний рахунок: 1500.00; підсумок 12100.00 -> 13600.00
+[0033] [Portfolio] Прохід завершено, склад портфеля незмінний
+[0034] [Portfolio] Початок проходу Profitability; продуктів 4
+[0035] [Profitability] Депозит - витрата банку: -12000.00; підсумок 0 -> -12000.00
+[0036] [Profitability] Кредит: 40000.00; підсумок -12000.00 -> 28000.00
+[0037] [Profitability] Картка: 200.00; підсумок 28000.00 -> 28200.00
+[0038] [Profitability] Інвестиційний рахунок: 500.00; підсумок 28200.00 -> 28700.00
+[0039] [Portfolio] Прохід завершено, склад портфеля незмінний
+[0040] [Portfolio] Початок проходу ClientReport; продуктів 4
+[0041] [ClientReport] Депозит: 100000
+[0042] [ClientReport] Кредит: 200000
+[0043] [ClientReport] Картка: 10000
+[0044] [ClientReport] Інвестиційний рахунок: 50000
+[0045] [Portfolio] Прохід завершено, склад портфеля незмінний
+[0046] [Portfolio] Початок проходу ; продуктів 4
+[0047] [Portfolio] Прохід завершено, склад портфеля незмінний
+[0048] [Portfolio] Початок проходу Reserves; продуктів 0
+[0049] [Portfolio] Прохід завершено, склад портфеля незмінний
+[0050] [Tests] PASS: 23 checks
