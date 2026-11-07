@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/lab07/lab07.iml" filepath="$PROJECT_DIR$/lab07/lab07.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab08/lab08.iml" filepath="$PROJECT_DIR$/lab08/lab08.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab09/lab09.iml" filepath="$PROJECT_DIR$/lab09/lab09.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab10/lab10.iml" filepath="$PROJECT_DIR$/lab10/lab10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab11/lab11.iml" filepath="$PROJECT_DIR$/lab11/lab11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab12/lab12.iml" filepath="$PROJECT_DIR$/lab12/lab12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab13/lab13.iml" filepath="$PROJECT_DIR$/lab13/lab13.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab14/lab14.iml" filepath="$PROJECT_DIR$/lab14/lab14.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab15/lab15.iml" filepath="$PROJECT_DIR$/lab15/lab15.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab16/lab16.iml" filepath="$PROJECT_DIR$/lab16/lab16.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/repository.iml" filepath="$PROJECT_DIR$/.idea/repository.iml" />
+    </modules>
+  </component>
+</project>
