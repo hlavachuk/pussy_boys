@@ -6,7 +6,9 @@ import java.util.List;
 import Task1.BankStructure;
 import Task1.BankStructure.*;
 import Task2.Documents.*;
-import Task3.OperationHistory.*;
+import Task3.Merchant;
+import Task3.MerchantFactory;
+import Task3.Operation;
 
 public final class Main {
     private Main() {}

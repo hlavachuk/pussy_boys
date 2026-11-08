@@ -1,6 +1,8 @@
 import Task1.BankStructure.*;
 import Task2.Documents.*;
-import Task3.OperationHistory.*;
+import Task3.Merchant;
+import Task3.MerchantFactory;
+import Task3.Operation;
 import common.Logger;
 import java.math.BigDecimal;
 import java.time.LocalDate;

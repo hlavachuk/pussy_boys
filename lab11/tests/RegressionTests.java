@@ -1,5 +1,5 @@
-import Task1.CreditHistory.*;
-import Task2.CardOptions.*;
+import Task1.*;
+import Task2.*;
 import Task3.InternationalPayments.*;
 import Task4.AccountOpening.*;
 import common.Logger;

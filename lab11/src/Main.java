@@ -1,9 +1,8 @@
 import common.Logger;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import Task1.CreditHistory.*;
-import Task2.CardOptions;
-import Task2.CardOptions.*;
+import Task1.*;
+import Task2.*;
 import Task3.InternationalPayments.*;
 import Task4.AccountOpening.*;
 
@@ -22,10 +21,14 @@ public final class Main {
     }
     public static void task2() {
         Logger.log("Main", "2. Decorator: опції карток");
-        Card base = new BasicCard(); CardOptions.show(base);
-        CardOptions.show(new Sms(new TravelInsurance(new Cashback(base))));
-        CardOptions.show(new Lounge(new HigherLimit(new BasicCard())));
+        Card base = new BasicCard(); showCard(base);
+        showCard(new Sms(new TravelInsurance(new Cashback(base))));
+        showCard(new Lounge(new HigherLimit(new BasicCard())));
     }
+    private static void showCard(Card card) {
+        Logger.log("CardSystem", card.description() + ": " + card.monthlyFee() + " грн/місяць");
+    }
+
     public static void task3() {
         Logger.log("Main", "3. Adapter: SWIFT");
         Treasury treasury = new Treasury(new SwiftAdapter(new SwiftLibrary()));
